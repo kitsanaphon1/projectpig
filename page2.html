@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เลือกทางเดิน 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3);
+            font-family: 'Kanit', sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 1.1em;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn.yes {
+            background: #32cd32;
+        }
+
+        .btn.no {
+            background: #ff4500;
+        }
+
+        .btn.play {
+            background: #007bff;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .video-container {
+            display: none;
+        }
+    </style>
+    <script>
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('musicFrame', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            console.log("YouTube Player Ready");
+        }
+
+        function toggleMusic() {
+            if (player.getPlayerState() === 1) {
+                player.pauseVideo();
+            } else {
+                player.playVideo();
+            }
+        }
+    </script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+</head>
+<body>
+    <div class="video-container">
+        <iframe id="musicFrame" width="560" height="315" 
+        src="https://www.youtube.com/watch?v=7vSdwtHm5q0" 
+        frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+    
+    </div>
+    
+    <div class="container">
+        <h1>หมูจะไปต่อกับเค้ามั้ย? 😘</h1>
+        <p>เลือกเลยว่าจะไปต่อหรือหยุดแค่นี้!</p>
+        <a href="how_we_met.html" class="btn yes">ไปต่อ 💖</a>
+        <a href="reconsider.html" class="btn no">พอแล้ว 😢</a>
+        <button class="btn play" onclick="toggleMusic()">เล่น/หยุดเพลง 🎵</button>
+    </div>
+</body>
+</html>
